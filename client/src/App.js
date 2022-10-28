@@ -1,4 +1,4 @@
-import { Route, Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "./history";
 
 import Header from "./components/Header";
@@ -13,11 +13,13 @@ function App() {
     <div>
       <Router history={history}>
         <Header />
-        <Route path="/" exact component={StreamList} />
-        <Route path="/streams/new" exact component={StreamCreate} />
-        <Route path="/streams/delete/:id" exact component={StreamDelete} />
-        <Route path="/streams/show" exact component={StreamShow} />
-        <Route path="/streams/edit/:id" exact component={StreamEdit} />
+        <Switch>
+          <Route path="/" exact component={StreamList} />
+          <Route path="/streams/new" exact component={StreamCreate} />
+          <Route path="/streams/delete/:id" exact component={StreamDelete} />
+          <Route path="/streams/:id" exact component={StreamShow} />
+          <Route path="/streams/edit/:id" exact component={StreamEdit} />
+        </Switch>
       </Router>
     </div>
   );
